@@ -1,4 +1,3 @@
 /.vscode/
 *.dblite
 **/.DS_Store
-src/build
