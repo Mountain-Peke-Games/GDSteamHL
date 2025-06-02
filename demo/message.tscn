@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ccmsfe67j6hcn"]
 
-[ext_resource type="Script" path="res://message.gd" id="1_qaueq"]
+[ext_resource type="Script" uid="uid://o7th6ofx8ip6" path="res://message.gd" id="1_qaueq"]
 
 [node name="message" type="Control"]
 custom_minimum_size = Vector2(0, 30)

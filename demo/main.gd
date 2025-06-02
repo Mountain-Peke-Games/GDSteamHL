@@ -28,7 +28,7 @@ func _ready():
 		%SteamToggle.disabled = true
 	else:
 		%SteamToggle.disabled = false
-	%DebugValues.load_values()
+	%SteamStatusValues.load_values()
 
 
 func _on_host_pressed():
@@ -38,12 +38,14 @@ func _on_host_pressed():
 		self.host_enet_session()
 
 func host_steam_session():
+	%InviteButton.visible = true
 	var peer = SteamHLPeer.new()
-	peer.create_server()
+	peer.create_server(8)
 	if self._shared_host_session(peer):
-		peer.lobby_changed.connect(%DebugValues.on_lobby_id_changed)
+		peer.lobby_changed.connect(%SteamStatusValues.on_lobby_id_changed)
 
 func host_enet_session():
+	%InviteButton.visible = false
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_server(PORT)
 	self._shared_host_session(peer)
@@ -53,6 +55,7 @@ func _shared_host_session(peer: MultiplayerPeer) -> bool:
 		print("Failed to start server")
 		return false
 	else:
+		print("Spawning cursor for ", peer.get_unique_id())
 		multiplayer.multiplayer_peer = peer
 		%HostConnectOptions.visible = false
 		%SessionUI.visible = true
@@ -63,7 +66,7 @@ func _shared_host_session(peer: MultiplayerPeer) -> bool:
 
 func _on_connect_pressed():
 	if %SteamToggle.button_pressed:
-		SteamHLFriends.activate_game_overlay(0) # 0=Friends
+		SteamHLFriends.activate_game_overlay(SteamHLFriends.FRIENDS)
 	else:
 		self.connect_to_enet_session()
 
@@ -75,7 +78,7 @@ func connect_to_steam_session(lobby_id: SteamHLID):
 	var peer = SteamHLPeer.new()
 	peer.create_client(lobby_id)
 	if self._shared_connect_to_session(peer):
-		peer.lobby_changed.connect(%DebugValues.on_lobby_id_changed)
+		peer.lobby_changed.connect(%SteamStatusValues.on_lobby_id_changed)
 
 func connect_to_enet_session():
 	var peer = ENetMultiplayerPeer.new()

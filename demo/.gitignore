@@ -1,6 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
 
+# Steam ignores
+steam_appid.txt
+
 # Build ignores
 bin/*
 !bin/*.gdextension
