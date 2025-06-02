@@ -1,6 +1,6 @@
-#ifndef STEAMHLNETWORKINGSOCKETS_H
-#define STEAMHLNETWORKINGSOCKETS_H
-#include "steamhl.h"
+#pragma once
+
+#include <src/steamhl.h>
 
 #include <steam_api.h>
 
@@ -31,4 +31,3 @@ namespace godot {
 		static int receiveMessagesOnPollGroup(HSteamNetPollGroup hPollGroup, SteamNetworkingMessage_t** ppOutMessages, int nMaxMessages);
 	};
 }
-#endif // !STEAMHLNETWORKINGSOCKETS_H

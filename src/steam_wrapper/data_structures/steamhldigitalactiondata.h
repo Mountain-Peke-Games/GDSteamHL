@@ -1,5 +1,4 @@
-#ifndef STEAMHLDIGITALACTIONDATA_H
-#define STEAMHLDIGITALACTIONDATA_H
+#pragma once
 
 #include <godot_cpp/classes/ref_counted.hpp>
 
@@ -25,5 +24,3 @@ namespace godot {
 		static void _bind_methods();
 	};
 }
-
-#endif // !STEAMHLDIGITALACTIONDATA_H

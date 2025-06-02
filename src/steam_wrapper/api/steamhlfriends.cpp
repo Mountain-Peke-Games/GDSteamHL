@@ -1,5 +1,6 @@
 #include "steamhlfriends.h"
-#include "steamhlutils.h"
+
+#include <src/steam_wrapper/api/steamhlutils.h>
 
 using namespace godot;
 

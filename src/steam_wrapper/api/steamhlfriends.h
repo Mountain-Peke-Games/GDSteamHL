@@ -1,7 +1,7 @@
-#ifndef STEAMHLFRIENDS_H
-#define STEAMHLFRIENDS_H
-#include "steamhl.h"
-#include "steamhlid.h"
+#pragma once
+
+#include <src/steamhl.h>
+#include <src/steam_wrapper/data_structures/steamhlid.h>
 
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/classes/image_texture.hpp>
@@ -51,5 +51,3 @@ namespace godot {
 		static void _bind_methods();
 	};
 }
-
-#endif // !STEAMHLFRIENDS_H

@@ -1,7 +1,8 @@
 #include "steamhl.h"
-#include "steamhlid.h"
-#include "steamhlinput.h"
-#include "steamhluserstats.h"
+
+#include <src/steam_wrapper/data_structures/steamhlid.h>
+#include <src/steam_wrapper/api/steamhlinput.h>
+#include <src/steam_wrapper/api/steamhluserstats.h>
 
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
@@ -43,7 +44,7 @@ void SteamHL::shutdown() {
 void SteamHL::_process() {
 	if (SteamHL::isInitialized()) {
 		SteamAPI_RunCallbacks();
-		SteamHLInput::get_singleton()->_process();
+		SteamHLInput::get_singleton()->_process(); // TODO = Directly connect to _process callback?
 	}
 }
 

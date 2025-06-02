@@ -1,9 +1,9 @@
-#ifndef STEAMHLPEER_H
-#define STEAMHLPEER_H
+#pragma once
+
 #include <godot_cpp/classes/multiplayer_peer_extension.hpp>
 #include <godot_cpp/templates/hash_set.hpp>
 
-#include "steamhlid.h"
+#include <src/steam_wrapper/data_structures/steamhlid.h>
 
 #define EMIT_SIGNAL_SAFE(signal, ...) if (!this->isClosing) this->emit_signal(signal, __VA_ARGS__);
 
@@ -104,5 +104,3 @@ namespace godot {
 		void __closeHSteamNetConnection(int32_t peerId, HSteamNetConnection connection);
 	};
 }
-
-#endif // !STEAMHLPEER_H

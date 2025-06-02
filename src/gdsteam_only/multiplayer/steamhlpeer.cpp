@@ -1,7 +1,8 @@
-#include "steamhlmatchmaking.h"
-#include "steamhlnetworkingsockets.h"
 #include "steamhlpeer.h"
-#include "steamhluser.h"
+
+#include <src/steam_wrapper/api/steamhlmatchmaking.h>
+#include <src/steam_wrapper/api/steamhlnetworkingsockets.h>
+#include <src/steam_wrapper/api/steamhluser.h>
 
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>

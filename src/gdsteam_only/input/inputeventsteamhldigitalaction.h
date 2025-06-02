@@ -1,5 +1,4 @@
-#ifndef INPUTEVENTSTEAMHLDIGITALACTION_H
-#define INPUTEVENTSTEAMHLDIGITALACTION_H
+#pragma once
 
 #include <godot_cpp/classes/input_event_action.hpp>
 
@@ -25,4 +24,3 @@ namespace godot {
 		static void _bind_methods();
 	};
 }
-#endif // !INPUTEVENTSTEAMHLDIGITALACTION_H

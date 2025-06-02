@@ -1,6 +1,6 @@
-#ifndef STEAMHLUSERSTATS_H
-#define STEAMHLUSERSTATS_H
-#include "steamhl.h"
+#pragma once
+
+#include <src/steamhl.h>
 
 #include <steam_api.h>
 
@@ -33,4 +33,3 @@ namespace godot {
 		static SteamHLUserStats* _singleton;
 	};
 }
-#endif // !STEAMHLUSERSTATS_H

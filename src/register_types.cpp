@@ -1,20 +1,20 @@
 #include "register_types.h"
 
-#include "inputeventsteamhlanalogaction.h"
-#include "inputeventsteamhldigitalaction.h"
-#include "steamhl.h"
-#include "steamhlanalogactiondata.h"
-#include "steamhldigitalactiondata.h"
-#include "steamhlfriends.h"
-#include "steamhlid.h"
-#include "steamhlinput.h"
-#include "steamhlnetworkingsockets.h"
-#include "steamhlpeer.h"
-#include "steamhluser.h"
-#include "steamhlutils.h"
-#include "steamHLnetworkingutils.h"
-#include "steamhlapps.h"
-#include "steamhluserstats.h"
+#include <src/gdsteam_only/input/inputeventsteamhlanalogaction.h>
+#include <src/gdsteam_only/input/inputeventsteamhldigitalaction.h>
+#include <src/steamhl.h>
+#include <src/steam_wrapper/data_structures/steamhlanalogactiondata.h>
+#include <src/steam_wrapper/data_structures/steamhldigitalactiondata.h>
+#include <src/steam_wrapper/api/steamhlfriends.h>
+#include <src/steam_wrapper/data_structures/steamhlid.h>
+#include <src/steam_wrapper/api/steamhlinput.h>
+#include <src/steam_wrapper/api/steamhlnetworkingsockets.h>
+#include <src/gdsteam_only/multiplayer/steamhlpeer.h>
+#include <src/steam_wrapper/api/steamhluser.h>
+#include <src/steam_wrapper/api/steamhlutils.h>
+#include <src/steam_wrapper/api/steamHLnetworkingutils.h>
+#include <src/steam_wrapper/api/steamhlapps.h>
+#include <src/steam_wrapper/api/steamhluserstats.h>
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>

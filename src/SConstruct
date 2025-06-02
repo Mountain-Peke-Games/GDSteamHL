@@ -37,8 +37,11 @@ except Exception:
 name = "libgdsteamhl"
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
-env.Append(CPPPATH=["../../" + STEAM_HEADERS])
-sources = Glob("*.cpp")
+env.Append(CPPPATH=["../../", "../../" + STEAM_HEADERS])
+sources = []
+for dir, _, _ in os.walk('..'):
+    if not dir.startswith(os.path.join('..', 'build')):
+        sources.extend(Glob(os.path.join('build', dir, '*.cpp')))
 
 steam_lib = "steam_api"
 steam_libpath = "../../" + STEAM_BINARIES

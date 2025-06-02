@@ -1,6 +1,6 @@
-#ifndef STEAMHLMATCHMAKING_H
-#define STEAMHLMATCHMAKING_H
-#include "steamhl.h"
+#pragma once
+
+#include <src/steamhl.h>
 
 #include <steam_api.h>
 
@@ -27,4 +27,3 @@ namespace godot {
 		static bool inviteUserToLobby(CSteamID steamIDLobby, CSteamID steamIDInvite);
 	};
 }
-#endif // !STEAMHLMATCHMAKING_H

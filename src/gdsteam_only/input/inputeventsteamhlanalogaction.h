@@ -1,5 +1,5 @@
-#ifndef INPUTEVENTSTEAMHLANALOGACTION_H
-#define INPUTEVENTSTEAMHLANALOGACTION_H
+#pragma once
+
 #include <godot_cpp/classes/input_event_action.hpp>
 
 #include <steam_api.h>
@@ -37,4 +37,3 @@ namespace godot {
 		static void _bind_methods();
 	};
 }
-#endif // !INPUTEVENTSTEAMHLANALOGACTION_H

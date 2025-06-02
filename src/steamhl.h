@@ -1,5 +1,5 @@
-#ifndef STEAMHL_H
-#define STEAMHL_H
+#pragma once
+
 #include <steam_api.h>
 
 #include <godot_cpp/classes/node.hpp>
@@ -40,5 +40,3 @@ namespace godot {
 		static bool _steamApiInitialized;
 	};
 }
-
-#endif // !STEAMHL_H

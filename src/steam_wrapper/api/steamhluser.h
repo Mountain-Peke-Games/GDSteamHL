@@ -1,7 +1,7 @@
-#ifndef STEAMHLUSER_H
-#define STEAMHLUSER_H
-#include "steamhl.h"
-#include "steamhlid.h"
+#pragma once
+
+#include <src/steamhl.h>
+#include <src/steam_wrapper/data_structures/steamhlid.h>
 
 #include <godot_cpp/core/class_db.hpp>
 
@@ -22,4 +22,3 @@ namespace godot {
 		static void _bind_methods();
 	};
 }
-#endif // !STEAMHLUSER_H

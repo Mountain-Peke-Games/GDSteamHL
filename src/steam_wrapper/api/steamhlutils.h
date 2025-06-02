@@ -1,6 +1,6 @@
-#ifndef STEAMHLUTILS_H
-#define STEAMHLUTILS_H
-#include "steamhl.h"
+#pragma once
+
+#include <src/steamhl.h>
 
 #include <godot_cpp/core/object.hpp>
 
@@ -44,5 +44,3 @@ namespace godot {
 		static void _bind_methods();
 	};
 }
-
-#endif // !STEAMHLUTILS_H

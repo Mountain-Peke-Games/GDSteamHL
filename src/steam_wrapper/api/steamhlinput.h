@@ -1,8 +1,8 @@
-#ifndef STEAMHLINPUT_H
-#define STEAMHLINPUT_H
-#include "steamhl.h"
-#include "steamhlanalogactiondata.h"
-#include "steamhldigitalactiondata.h"
+#pragma once
+
+#include <src/steamhl.h>
+#include <src/steam_wrapper/data_structures/steamhlanalogactiondata.h>
+#include <src/steam_wrapper/data_structures/steamhldigitalactiondata.h>
 
 #include <godot_cpp/templates/hash_set.hpp>
 #include <godot_cpp/templates/vector.hpp>
@@ -89,4 +89,3 @@ namespace godot {
 		HashMap<uint32_t, InputDigitalActionData_t> _controllerActionDigitalMap;
 	};
 }
-#endif // !STEAMHLINPUT_H

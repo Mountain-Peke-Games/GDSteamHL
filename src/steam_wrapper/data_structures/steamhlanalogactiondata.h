@@ -1,5 +1,4 @@
-#ifndef STEAMHLANALOGACTIONDATA_H
-#define STEAMHLANALOGACTIONDATA_H
+#pragma once
 
 #include <steam_api.h>
 #include <godot_cpp/classes/ref_counted.hpp>
@@ -35,5 +34,3 @@ namespace godot {
 		static void _bind_methods();
 	};
 }
-
-#endif // !STEAMHLANALOGACTIONDATA_H

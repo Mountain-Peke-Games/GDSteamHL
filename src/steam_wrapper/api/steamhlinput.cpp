@@ -1,6 +1,7 @@
-#include "inputeventsteamhlanalogaction.h"
-#include "inputeventsteamhldigitalaction.h"
 #include "steamhlinput.h"
+
+#include <src/gdsteam_only/input/inputeventsteamhlanalogaction.h>
+#include <src/gdsteam_only/input/inputeventsteamhldigitalaction.h>
 
 #include <godot_cpp/classes/input.hpp>
 #include <godot_cpp/core/class_db.hpp>
