@@ -198,7 +198,6 @@ bool SteamHL::isInitialized() {
 bool SteamHL::initialize() {
 	if (SteamAPI_Init()) {
 		SteamHL::_steamApiInitialized = true;
-		SteamHLUserStats::get_singleton()->Initialize();
 		if (SteamInput()->Init(true)) { // TODO=What to do if null?
 			UtilityFunctions::print("Successfully started SteamInput");
 		}

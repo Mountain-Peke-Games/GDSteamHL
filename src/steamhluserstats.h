@@ -16,12 +16,8 @@ namespace godot {
 		~SteamHLUserStats();
 
 		static SteamHLUserStats* get_singleton();
-
-		// SteamHL will attempt to initialize this automatically
-		static void Initialize();
-
+		
 		// TODO = Better handling of aynchronous APIs
-		bool RequestCurrentStats();
 		bool SetAchievement(const String& name);
 		bool GetAchievement(const String& name);
 

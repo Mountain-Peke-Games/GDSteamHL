@@ -1,0 +1,195 @@
+[gd_scene load_steps=3 format=3 uid="uid://blxyftm2bb1cb"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_8ba44"]
+[ext_resource type="Script" path="res://Debug Values.gd" id="1_b454a"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_8ba44")
+
+[node name="UI" type="Node" parent="."]
+
+[node name="SessionUI" type="Control" parent="UI"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SessionUI" type="VSplitContainer" parent="UI/SessionUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 580
+
+[node name="Panel" type="Panel" parent="UI/SessionUI/SessionUI"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/SessionUI/SessionUI/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="MessagesVBox" type="VBoxContainer" parent="UI/SessionUI/SessionUI/Panel/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+
+[node name="MessageEntry" type="LineEdit" parent="UI/SessionUI/SessionUI"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Type message here"
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="Invite" type="Button" parent="UI/SessionUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.84
+anchor_right = 1.0
+anchor_bottom = 0.069
+offset_left = 0.319946
+offset_bottom = 0.287994
+text = "Invite"
+
+[node name="DebugValues" type="VBoxContainer" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_right = 0.247
+anchor_bottom = 0.333
+offset_right = -0.544006
+offset_bottom = 0.216003
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_b454a")
+
+[node name="Label" type="Label" parent="UI/DebugValues"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Steam API Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Init" type="Label" parent="UI/DebugValues"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Steam API Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AppId" type="Label" parent="UI/DebugValues"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Steam API Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Running" type="Label" parent="UI/DebugValues"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Steam API Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Deck" type="Label" parent="UI/DebugValues"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Steam API Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lobby" type="Label" parent="UI/DebugValues"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Steam API Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HostConnectOptions" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 147.0
+offset_top = 351.0
+offset_right = 1070.0
+offset_bottom = 546.0
+
+[node name="VSplitContainer" type="VSplitContainer" parent="HostConnectOptions"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.065
+anchor_top = -0.564
+anchor_right = 1.022
+anchor_bottom = 0.277
+offset_left = -0.00499344
+offset_top = -0.0199966
+offset_right = -0.306091
+offset_bottom = -0.0150032
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 50
+
+[node name="NameEntry" type="LineEdit" parent="HostConnectOptions/VSplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="HostConnectOptions/VSplitContainer"]
+layout_mode = 2
+
+[node name="SteamToggle" type="CheckBox" parent="HostConnectOptions/VSplitContainer/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Steam?"
+
+[node name="Host" type="Button" parent="HostConnectOptions/VSplitContainer/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Host"
+
+[node name="Connect" type="Button" parent="HostConnectOptions/VSplitContainer/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Connect"
+
+[node name="CursorTrackers" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+unique_name_in_owner = true
+_spawnable_scenes = PackedStringArray("res://trackable_cursor.tscn")
+spawn_path = NodePath("../CursorTrackers")
+
+[connection signal="text_submitted" from="UI/SessionUI/SessionUI/MessageEntry" to="." method="_on_message_entry_text_submitted"]
+[connection signal="pressed" from="UI/SessionUI/Invite" to="." method="_on_invite_pressed"]
+[connection signal="text_changed" from="HostConnectOptions/VSplitContainer/NameEntry" to="." method="_on_name_entry_text_changed"]
+[connection signal="pressed" from="HostConnectOptions/VSplitContainer/Buttons/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="HostConnectOptions/VSplitContainer/Buttons/Connect" to="." method="_on_connect_pressed"]

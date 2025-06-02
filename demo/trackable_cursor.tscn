@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://d00dw37dfte2x"]
+
+[ext_resource type="Script" path="res://trackable_cursor.gd" id="1_8g26u"]
+[ext_resource type="Texture2D" uid="uid://bn666vc2mxqx" path="res://Textures/circle.png" id="1_pu4nr"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_u2586"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = false
+properties/0/sync = true
+
+[node name="TrackableCursor" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("1_8g26u")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+mouse_filter = 2
+texture = ExtResource("1_pu4nr")
+expand_mode = 2
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 0.1
+replication_config = SubResource("SceneReplicationConfig_u2586")

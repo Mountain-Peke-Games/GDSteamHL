@@ -1,0 +1,75 @@
+#!/usr/bin/env python
+
+import os
+import logging
+
+
+EnsureSConsVersion(4, 0)
+
+
+try:
+    Import("env")
+except Exception:
+    # Default tools with no platform defaults to gnu toolchain.
+    # We apply platform specific toolchains via our custom tools.
+    env = Environment(tools=["default"], PLATFORM="")
+
+try:
+    Import("STEAM_HEADERS")
+except Exception:
+    # Default tools with no platform defaults to gnu toolchain.
+    # We apply platform specific toolchains via our custom tools.
+    STEAM_HEADERS = "steamworks-api/public/steam"
+
+try:
+    Import("STEAM_BINARIES")
+except Exception:
+    STEAM_BINARIES = "steamworks-api/redistributable_bin"
+
+# For reference:
+# - CCFLAGS are compilation flags shared between C and C++
+# - CFLAGS are for C-specific compilation flags
+# - CXXFLAGS are for C++-specific compilation flags
+# - CPPFLAGS are for pre-processor flags
+# - CPPDEFINES are for pre-processor defines
+# - LINKFLAGS are for linking flags
+
+name = "libgdsteamhl"
+
+# tweak this if you want to use different folders, or more folders, to store your source code in.
+env.Append(CPPPATH=["../../" + STEAM_HEADERS])
+sources = Glob("*.cpp")
+
+steam_lib = "steam_api"
+steam_libpath = "../../" + STEAM_BINARIES
+if env["platform"] == "macos":
+    steam_lib += ".dylib"
+    steam_libpath += "/osx"
+    env.Append(LIBS=[steam_lib])
+    env.Append(LIBPATH=[steam_libpath])
+else:
+    # Only support 64-bit
+    steam_lib += "64.lib"
+    steam_libpath += "/win64"
+    # Thank you GodotSteam!
+    env.Append(LIBPATH=[steam_libpath])
+    if env["CC"] == "cl":
+        env.Append(LINKFLAGS=[steam_lib])
+    else:
+        env.Append(LIBPATH=[steam_libpath])
+
+
+if env["platform"] == "macos":
+    library = env.SharedLibrary(
+        "../../demo/bin/{}.{}.{}.framework/{}.{}.{}".format(
+            name, env["platform"], env["target"], name, env["platform"], env["target"]
+        ),
+        source=sources,
+    )
+else:
+    library = env.SharedLibrary(
+        "../../demo/bin/{}{}{}".format(name, env["suffix"], env["SHLIBSUFFIX"]),
+        source=sources,
+    )
+
+Default(library)
