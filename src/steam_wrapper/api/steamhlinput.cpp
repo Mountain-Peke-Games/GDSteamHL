@@ -535,7 +535,7 @@ void SteamHLInput::_process() { // TODO = Change to use NOTIFICATION process
 		}
 	}
 
-	// Finally add all the current controllers (readd old and add new)
+	// Finally add all the current controllers (re-add old and add new)
 	for (int i = 0; i < totalConnectedControllers; i++) {
 		InputHandle_t controller = *(this->__controllersCache + i);
 		this->_connectedControllers.insert(controller);

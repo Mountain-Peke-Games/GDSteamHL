@@ -64,14 +64,14 @@ else:
 
 if env["platform"] == "macos":
     library = env.SharedLibrary(
-        "../../demo/bin/{}.{}.{}.framework/{}.{}.{}".format(
+        "../../demo/bin/gdsteamhl/{}.{}.{}.framework/{}.{}.{}".format(
             name, env["platform"], env["target"], name, env["platform"], env["target"]
         ),
         source=sources,
     )
 else:
     library = env.SharedLibrary(
-        "../../demo/bin/{}{}{}".format(name, env["suffix"], env["SHLIBSUFFIX"]),
+        "../../demo/bin/gdsteamhl/{}{}{}".format(name, env["suffix"], env["SHLIBSUFFIX"]),
         source=sources,
     )
 
