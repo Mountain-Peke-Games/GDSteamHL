@@ -62,7 +62,7 @@ Additionally, if you prefer to work with a language other than C++, there are co
 </details>
 
 ### Differences
-Expressobits' clients connect by **user** SteamID. GDSteamHL clients connect by **lobby** SteamID. The lobby system is what allows you to press "Join Game" and send invites in Steam, which is why GDSteamHL uses it. You can achieve the same behavior with Expressobits' peers by directly using the `ISteamMatchmaking` APIs exposed by GodotSteam.
+Expressobits' client connects by **user** SteamID. GDSteamHL clients connect by **lobby** SteamID. The lobby system is what allows you to press "Join Game" and send invites in Steam, which is why GDSteamHL uses it. You can achieve the same behavior with Expressobits' peer by directly using the `ISteamMatchmaking` APIs exposed by GodotSteam.
 
 GodotSteam wraps **all** Steamworks APIs.
 
