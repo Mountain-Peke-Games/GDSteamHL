@@ -74,7 +74,7 @@ Through GDSteamHL, the Steam Overlay (and SteamInput) work in the Godot Editor e
 
 Regardless, I would actually recommend using GodotSteam if you don't need a peer. It is established, actively maintained, and has a community. If you do need a peer, then seriously consider Expressobits'. His code is clean and even has a reference implementation for using lobbies.
 
-This repo largely exists as a historical artifact and reference implementation. Work on GDSteamHL stared around June 2023, predating the GitHub release of Expressobits' peer by a few months. GodotSteam's GDExtension implementation existed at that point, but its multiplayer peer was still a module. That (and admittedly some desire to learn it myself) is why GDSteamHL exists today. History has made it redundant though, in my eyes.
+This repo largely exists as a historical artifact and reference implementation. Work on GDSteamHL started around June 2023, predating the GitHub release of Expressobits' peer by a few months. GodotSteam's GDExtension implementation existed at that point, but its multiplayer peer was still a module. That (and admittedly some desire to learn it myself) is why GDSteamHL exists today. History has made it redundant though, in my eyes.
 
 *Hunt (Mountain Peke Games)*
 </details>
