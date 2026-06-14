@@ -6,4 +6,5 @@ steam_appid.txt
 
 # Build ignores
 bin/*
-!bin/gdsteamhl/*.gdextension
+!bin/gdsteamhl/gdsteamhl.gdextension
+!bin/gdsteamhl/gdsteamhl.gdextension.uid
