@@ -10,7 +10,6 @@ namespace godot {
 
 	public:
 		InputEventSteamHLAnalogAction();
-		InputEventSteamHLAnalogAction(uint64_t controllerHandle, uint64_t actionHandle);
 		~InputEventSteamHLAnalogAction();
 
 		// InputEvent has device, but it is int32 instead of int64

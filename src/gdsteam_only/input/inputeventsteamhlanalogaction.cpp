@@ -4,11 +4,9 @@
 
 using namespace godot;
 
-InputEventSteamHLAnalogAction::InputEventSteamHLAnalogAction() { }
-
-InputEventSteamHLAnalogAction::InputEventSteamHLAnalogAction(uint64_t controllerHandle, uint64_t actionHandle) {
-	this->controllerHandle = controllerHandle;
-	this->actionHandle = actionHandle;
+InputEventSteamHLAnalogAction::InputEventSteamHLAnalogAction() {
+	this->actionHandle = 0;
+	this->controllerHandle = 0;
 }
 
 InputEventSteamHLAnalogAction::~InputEventSteamHLAnalogAction() { }

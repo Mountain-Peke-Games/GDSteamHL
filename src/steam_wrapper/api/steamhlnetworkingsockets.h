@@ -21,7 +21,7 @@ namespace godot {
 		static bool createSocketPair(HSteamNetConnection* pOutConnection1, HSteamNetConnection* pOutConnection2, bool bUseNetworkLoopback, const SteamNetworkingIdentity* pIdentity1, const SteamNetworkingIdentity* pIdentity2);
 
 		static EResult sendMessageToConnection(HSteamNetConnection hConn, const void* pData, uint32 cbData, int nSendFlags, int64* pOutMessageNumber);
-		static void sendMessages(int nMessages, SteamNetworkingMessage_t* const* pMessages, int64* pOutMessageNumberOrResult);
+		static void sendMessages(int nMessages, SteamNetworkingMessage_t** pMessages, int64* pOutMessageNumberOrResult, bool bDeleteFailedMessages);
 		static EResult flushMessagesOnConnection(HSteamNetConnection hConn);
 		static int receiveMessagesOnConnection(HSteamNetConnection hConn, SteamNetworkingMessage_t** ppOutMessages, int nMaxMessages);
 

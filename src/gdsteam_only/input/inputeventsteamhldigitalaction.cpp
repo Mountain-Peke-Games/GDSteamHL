@@ -4,7 +4,10 @@
 
 using namespace godot;
 
-InputEventSteamHLDigitalAction::InputEventSteamHLDigitalAction() { }
+InputEventSteamHLDigitalAction::InputEventSteamHLDigitalAction() {
+	this->actionHandle = 0;
+	this->controllerHandle = 0;
+}
 
 InputEventSteamHLDigitalAction::~InputEventSteamHLDigitalAction() { }
 

@@ -49,7 +49,7 @@ EResult SteamHLNetworkingSockets::sendMessageToConnection(HSteamNetConnection hC
 	return steamNetworkingSockets->SendMessageToConnection(hConn, pData, cbData, nSendFlags, pOutMessageNumber);
 }
 
-void SteamHLNetworkingSockets::sendMessages(int nMessages, SteamNetworkingMessage_t* const* pMessages, int64* pOutMessageNumberOrResult) {
+void SteamHLNetworkingSockets::sendMessages(int nMessages, SteamNetworkingMessage_t** pMessages, int64* pOutMessageNumberOrResult, bool bDeleteFailedMessages) {
 	ISteamNetworkingSockets* steamNetworkingSockets = SteamNetworkingSockets();
 	if (steamNetworkingSockets == NULL) {
 		for (int64* msgResult = pOutMessageNumberOrResult; msgResult < (pOutMessageNumberOrResult+nMessages); msgResult++) {
@@ -57,7 +57,7 @@ void SteamHLNetworkingSockets::sendMessages(int nMessages, SteamNetworkingMessag
 		}
 	}
 	else {
-		steamNetworkingSockets->SendMessages(nMessages, pMessages, pOutMessageNumberOrResult);
+		steamNetworkingSockets->SendMessages(nMessages, pMessages, pOutMessageNumberOrResult, bDeleteFailedMessages);
 	}
 }
 

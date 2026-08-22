@@ -30,7 +30,8 @@ void SteamHLUtils::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("is_overlay_enabled"), &SteamHLUtils::IsOverlayEnabled);
 	ClassDB::bind_method(D_METHOD("is_steam_in_big_picture_mode"), &SteamHLUtils::IsSteamInBigPictureMode);
 	ClassDB::bind_method(D_METHOD("is_steam_running_in_vr"), &SteamHLUtils::IsSteamRunningInVR);
-	ClassDB::bind_method(D_METHOD("is_steam_running_on_steam_deck"), &SteamHLUtils::IsSteamRunningOnSteamDeck);
+	ClassDB::bind_method(D_METHOD("is_running_on_steam_hardware"), &SteamHLUtils::IsRunningOnSteamHardware);
+	ClassDB::bind_method(D_METHOD("is_running_under_proton"), &SteamHLUtils::IsRunningUnderProton);
 	ClassDB::bind_method(D_METHOD("show_floating_gamepad_text_input", "keyboard_mode", "field_rect"), &SteamHLUtils::ShowFloatingGamepadTextInput);
 	ClassDB::bind_method(D_METHOD("show_gamepad_text_input", "input_mode", "line_input_mode", "description", "char_max", "existing_text"), &SteamHLUtils::ShowGamepadTextInput);
 	
@@ -47,6 +48,11 @@ void SteamHLUtils::_bind_methods() {
 
 	BIND_ENUM_CONSTANT(k_EGamepadTextInputLineModeSingleLine);
 	BIND_ENUM_CONSTANT(k_EGamepadTextInputLineModeMultipleLines);
+
+	BIND_ENUM_CONSTANT(k_ESteamHardwareTypeNone);
+	BIND_ENUM_CONSTANT(k_ESteamHardwareTypeSteamDeck);
+	BIND_ENUM_CONSTANT(k_ESteamHardwareTypeSteamMachine);
+	BIND_ENUM_CONSTANT(k_ESteamHardwareTypeSteamFrame);
 }
 
 SteamHLUtils* SteamHLUtils::get_singleton() {
@@ -76,9 +82,14 @@ bool SteamHLUtils::IsSteamRunningInVR() {
 	return steamUtils->IsSteamRunningInVR();
 }
 
-bool SteamHLUtils::IsSteamRunningOnSteamDeck() {
+ESteamHardwareType SteamHLUtils::IsRunningOnSteamHardware() {
+	steamUtils_LOAD_OR_RETURN(k_ESteamHardwareTypeNone);
+	return steamUtils->IsRunningOnSteamHardware();
+}
+
+bool SteamHLUtils::IsRunningUnderProton() {
 	steamUtils_LOAD_OR_RETURN(false);
-	return steamUtils->IsSteamRunningOnSteamDeck();
+	return steamUtils->IsRunningUnderProton();
 }
 
 bool SteamHLUtils::ShowFloatingGamepadTextInput(EFloatingGamepadTextInputMode keyboardMode, const Rect2& fieldRect) {
