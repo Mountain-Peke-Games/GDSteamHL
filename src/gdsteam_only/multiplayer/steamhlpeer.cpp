@@ -30,8 +30,7 @@ SteamHLPeer::SteamHLPeer() : SteamHLPeer(DEFAULT_BUFFER_SIZE) { };
 
 SteamHLPeer::SteamHLPeer(int p_maxBufferSize) {
 	this->isClosing = false;
-
-	// TODO: if anything breaks, this new block is why
+	
 	this->isServer = false;
 	this->transferChannel = 0;
 	this->transferMode = TRANSFER_MODE_RELIABLE;
@@ -92,11 +91,8 @@ void SteamHLPeer::_changeLobby(CSteamID newLobby) {
 		SteamHLMatchmaking::leaveLobby(this->lobbyId);
 	}
 	this->lobbyId = newLobby;
-	//SteamHLID* steamHLId = memnew(SteamHLID); // TODO=I live in fear of memory leaks
-	//steamHLId->steamId = newLobby;
 	Ref<SteamHLID> steamHLId(memnew(SteamHLID(newLobby)));
 	EMIT_SIGNAL_SAFE(SteamHLPeer::lobbySignal, steamHLId);
-	//this->emit_signal(SteamHLPeer::lobbySignal, steamHLID);
 }
 
 SteamHLID* SteamHLPeer::getLobbyId() const {
@@ -341,7 +337,6 @@ int32_t SteamHLPeer::_get_packet_peer() const {
 // It is not used: multiplayer_api.h -> is_server() { return get_unique_id() == MultiplayerPeer::TARGET_PEER_SERVER; }
 bool SteamHLPeer::_is_server() const {
 	return this->isServer;
-	//return this->listeningSocket != k_HSteamListenSocket_Invalid;
 }
 
 void SteamHLPeer::_poll() {
@@ -404,7 +399,6 @@ void SteamHLPeer::__closeHSteamNetConnection(int32_t peerId, HSteamNetConnection
 	if (connection == this->serverConnection) {
 		this->serverConnection = k_HSteamNetConnection_Invalid;
 		EMIT_SIGNAL_SAFE(SteamHLPeer::peerDisconnectedSignal, 1);
-		//this->emit_signal(SteamHLPeer::peerDisconnectedSignal, 1); // // TODO=See get_unique_id for why Godot requires this
 	}
 	else {
 		this->clientConnections.erase(connection);
@@ -416,7 +410,6 @@ void SteamHLPeer::_disconnect_peer(int32_t p_peer, bool p_force) { // TODO=Doubl
 		HSteamNetConnection connection = this->idConnectionMap.get(p_peer);
 		this->__closeHSteamNetConnection(p_peer, connection);
 		EMIT_SIGNAL_SAFE(SteamHLPeer::peerDisconnectedSignal, p_peer);
-		//this->emit_signal(SteamHLPeer::peerDisconnectedSignal, p_peer);
 	}
 	else {
 		// TODO = Error handling for when peer ID was not found
@@ -498,7 +491,6 @@ void SteamHLPeer::onSteamNetConnectionStatusChanged(SteamNetConnectionStatusChan
 			this->connectionState = k_ESteamNetworkingConnectionState_ClosedByPeer;
 		}
 		EMIT_SIGNAL_SAFE(SteamHLPeer::peerDisconnectedSignal, peerId);
-		//this->emit_signal(SteamHLPeer::peerDisconnectedSignal, peerId);
 		this->__closeHSteamNetConnection(steamId, connection);
 	}
 	// CASE 2: We're the client (no listening socket since we initiated).
@@ -508,7 +500,6 @@ void SteamHLPeer::onSteamNetConnectionStatusChanged(SteamNetConnectionStatusChan
 			&& connectionInfo.m_eState == k_ESteamNetworkingConnectionState_Connected) {
 			// Server just finished connecting.
 			EMIT_SIGNAL_SAFE(SteamHLPeer::peerConnectedSignal, 1);
-			//this->emit_signal(SteamHLPeer::peerConnectedSignal, 1); // TODO=See get_unique_id for why Godot requires this
 		}
 	}
 	// CASE 3: We're the server (because there is a listening socket) have to decide if we want to accept the incoming connection.
@@ -554,7 +545,6 @@ void SteamHLPeer::onSteamNetConnectionStatusChanged(SteamNetConnectionStatusChan
 		SteamHLNetworkingSockets::setConnectionPollGroup(connection, this->pollGroup);
 		this->idConnectionMap.insert(steamId, connection);
 		EMIT_SIGNAL_SAFE(SteamHLPeer::peerConnectedSignal, peerId);
-		//this->emit_signal(SteamHLPeer::peerConnectedSignal, peerId);
 	}
 }
 
@@ -589,7 +579,6 @@ void SteamHLPeer::onCreateLobbyResult(LobbyCreated_t* callback, bool failed) {
 		this->_changeLobby(CSteamID(callback->m_ulSteamIDLobby));
 		EMIT_SIGNAL_SAFE(SteamHLPeer::createLobbyResult, callback->m_eResult);
 	}
-	//this->emit_signal(SteamHLPeer::createLobbyResult, callback->m_eResult);
 }
 
 // TODO=Close on ERR_FAIL
@@ -621,7 +610,6 @@ void SteamHLPeer::onJoinLobbyResult(LobbyEnter_t* callback, bool failed) {
 			// If the connection is accepted, then onSteamNetConnectionStatus changed will capture it
 			EMIT_SIGNAL_SAFE(SteamHLPeer::joinLobbyResult, callback->m_EChatRoomEnterResponse);
 		}
-		//this->emit_signal(SteamHLPeer::joinLobbyResult, callback->m_EChatRoomEnterResponse);
 	}
 	// TODO = What if the signal comes after the peer is destroyed?
 	else if (!failed && (callback->m_EChatRoomEnterResponse == k_EChatRoomEnterResponseSuccess)) {

@@ -10,6 +10,7 @@
 VARIANT_ENUM_CAST(EFloatingGamepadTextInputMode);
 VARIANT_ENUM_CAST(EGamepadTextInputMode);
 VARIANT_ENUM_CAST(EGamepadTextInputLineMode);
+VARIANT_ENUM_CAST(ESteamHardwareType);
 
 namespace godot {
 	class SteamHLUtils : public Object {
@@ -24,7 +25,8 @@ namespace godot {
 		bool IsOverlayEnabled();
 		bool IsSteamInBigPictureMode();
 		bool IsSteamRunningInVR();
-		bool IsSteamRunningOnSteamDeck();
+		ESteamHardwareType IsRunningOnSteamHardware();
+		bool IsRunningUnderProton();
 		bool ShowFloatingGamepadTextInput(EFloatingGamepadTextInputMode keyboardMode, const Rect2& fieldRect);
 		bool ShowGamepadTextInput(EGamepadTextInputMode inputMode, EGamepadTextInputLineMode lineInputMode, const String& description, uint32_t charMax, const String& existingText);
 		// GetEnteredGamepadText* must be called within the callback, so we are not exposing it to Godot
