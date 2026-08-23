@@ -61,8 +61,8 @@ namespace godot {
 		uint64_t RegisterDigitalAction(const String &digitalAction);
 	
 	protected:
-		const static char* SteamHLInput::steamControllerConnectedSignal;
-		const static char* SteamHLInput::steamControllerDisconnectedSignal;
+		const static char* steamControllerConnectedSignal;
+		const static char* steamControllerDisconnectedSignal;
 
 		static void _bind_methods();
 

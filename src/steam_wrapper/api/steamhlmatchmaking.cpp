@@ -20,7 +20,7 @@ void SteamHLMatchmaking::leaveLobby(CSteamID steamIDLobby) {
 }
 
 const char* SteamHLMatchmaking::getLobbyData(CSteamID steamIDLobby, const char* pchKey) {
-	steamHLMatchmaking_LOAD_OR_RETURN(false);
+	steamHLMatchmaking_LOAD_OR_RETURN("");
 	return steamMatchmaking->GetLobbyData(steamIDLobby, pchKey);
 }
 

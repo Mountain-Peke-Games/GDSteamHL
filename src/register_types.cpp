@@ -12,7 +12,7 @@
 #include <src/gdsteam_only/multiplayer/steamhlpeer.h>
 #include <src/steam_wrapper/api/steamhluser.h>
 #include <src/steam_wrapper/api/steamhlutils.h>
-#include <src/steam_wrapper/api/steamHLnetworkingutils.h>
+#include <src/steam_wrapper/api/steamhlnetworkingutils.h>
 #include <src/steam_wrapper/api/steamhlapps.h>
 #include <src/steam_wrapper/api/steamhluserstats.h>
 

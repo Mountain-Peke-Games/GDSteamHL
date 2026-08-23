@@ -375,7 +375,7 @@ void SteamHLPeer::_close() {
 		this->pollGroup = k_HSteamNetPollGroup_Invalid;
 	}
 
-	for (this->remainingMsgsInBuffer; this->remainingMsgsInBuffer > 0; this->remainingMsgsInBuffer--) {
+	for (; this->remainingMsgsInBuffer > 0; this->remainingMsgsInBuffer--) {
 		this->msgBuffer[this->msgBufferCurrentMsgIndex]->Release();
 		(this->msgBufferCurrentMsgIndex)++;
 	}

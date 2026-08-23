@@ -81,7 +81,7 @@ void SteamHLAnalogActionData::godot_SetY(float newY) {
 }
 
 Vector2 SteamHLAnalogActionData::GetXY() const {
-	return Vector2::Vector2(this->x, this->y);
+	return Vector2(this->x, this->y);
 }
 
 void SteamHLAnalogActionData::SetXY(const Vector2 &newXY) {

@@ -43,7 +43,7 @@ void SteamHLFriends::_bind_methods() {
 }
 
 void SteamHLFriends::activateGameOverlay(EActivateOverlayOption overlayOption) {
-	char* pchDialog = "";
+	const char* pchDialog = "";
 	switch (overlayOption) {
 		case FRIENDS:
 			pchDialog = "friends";
